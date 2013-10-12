@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+import sys, urllib2, re, os
+
+# Check for configuration
+board_url = os.environ.get('board_url')
+if(board_url == None):
+    exit(0)
+
+if(len(sys.argv) > 1 and sys.argv[1] == "config"):
+    print """
+graph_title Online Users
+graph_vlabel current users
+graph_args -l 0
+graph_catebory MyBB
+graph_total Total
+members.label Members
+guests.label Guests
+members.draw AREA
+guests.draw STACK
+"""
+    exit(0)
+
+# Load the main page
+response = urllib2.urlopen(board_url)
+html = response.read()
+
+# Extract the data
+re_online = re.compile(r"([\d\,]+) members?, [\d\,]+ of whom (are|is) invisible, and ([\d\,]+) guests?")
+online = re_online.search(html)
+
+# Output values
+if(online != None):
+    print ("members.value %s" % online.group(1)).replace(',', '')
+    print ("guests.value %s" % online.group(3)).replace(',', '')

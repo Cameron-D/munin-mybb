@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+import sys, urllib2, re, os
+
+# Check for configuration
+board_url = os.environ.get('board_url')
+if(board_url == None):
+    exit(0)
+
+if(len(sys.argv) > 1 and sys.argv[1] == "config"):
+    print """
+graph_title Posts
+graph_vlabel posts
+graph_catebory MyBB
+graph_scale no
+graph_period minute
+posts.label Posts per minute
+posts.type COUNTER
+"""
+    exit(0)
+
+# Load the main page
+response = urllib2.urlopen(board_url)
+html = response.read()
+
+# Extract the data
+re_posts = re.compile("Our members have made a total of ([\d\,]+) posts in ([\d\,]+) threads.")
+posts = re_posts.search(html)
+
+# Output values
+if(posts != None):
+    print ("posts.value %s" % posts.group(1)).replace(',', '')
