@@ -11,7 +11,7 @@ if(len(sys.argv) > 1 and sys.argv[1] == "config"):
 graph_title Online Users
 graph_vlabel current users
 graph_args -l 0
-graph_catebory MyBB
+graph_category MyBB
 graph_total Total
 members.label Members
 guests.label Guests

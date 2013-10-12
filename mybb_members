@@ -10,7 +10,7 @@ if(len(sys.argv) > 1 and sys.argv[1] == "config"):
     print """
 graph_title Registered Members
 graph_vlabel members
-graph_catebory mybb
+graph_category mybb
 members.label Members
 """
     exit(0)

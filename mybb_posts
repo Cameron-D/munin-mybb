@@ -10,7 +10,7 @@ if(len(sys.argv) > 1 and sys.argv[1] == "config"):
     print """
 graph_title Total Posts
 graph_vlabel posts
-graph_catebory MyBB
+graph_category MyBB
 posts.label Posts
 """
     exit(0)
