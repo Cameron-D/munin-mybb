@@ -5,6 +5,9 @@ A set of Munin plugins for monitoring a MyBB forum.
 
 Note that a regular expression is used to extract the information from the main page so if the forum uses a language other than English or . instead of , as a thousands seperator then it will not function. The plugins will need to be edited to extract the right data.
 
+MyBB Community Thread: http://community.mybb.com/thread-146581.html  
+Live Preview: http://munin.cazzaserver.com/cazzaserver.com/aurora.cazzaserver.com/index.html#mybb
+
 Installation and Configuration
 ------------------------------
 
